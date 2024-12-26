@@ -1,0 +1,109 @@
+.book-detail {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.book-detail h1 {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.book-detail .book-cover {
+  display: block;
+  max-width: 300px;
+  height: auto;
+  margin: 0 auto 20px;
+  border-radius: 4px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.book-detail p {
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 10px;
+}
+
+.book-detail strong {
+  color: #333;
+}
+
+.back-button {
+  display: block;
+  margin: 20px auto 0;
+  padding: 10px 20px;
+  font-size: 1rem;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.back-button:hover {
+  background-color: #0056b3;
+}
+.tabs {
+  display: flex;
+  border-bottom: 1px solid #ccc;
+  margin-bottom: 20px;
+  gap: 10px; /* Добавляет расстояние между кнопками */
+  justify-content: flex-start; /* Выравнивает кнопки по левому краю */
+}
+
+.tab-button {
+  padding: 10px 15px; /* Увеличен padding для большей кликабельности */
+  text-align: center;
+  border: 1px solid #ccc;
+  border-bottom: none;
+  background-color: #f8f9fa;
+  cursor: pointer;
+  font-size: 16px;
+  color: #000;
+}
+
+.tab-button:not(.active):hover {
+  background-color: #f1f1f1;
+}
+
+.tab-button.active {
+  background-color: #fff;
+  border-top: 3px solid #4ad469; /* Зеленая верхняя граница */
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+  border-bottom: none;
+  font-weight: bold;
+}
+
+
+.characteristics-list {
+  margin-top: 20px;
+  list-style-type: none;
+  padding: 0;
+}
+
+.characteristic-row {
+  display: flex;
+  justify-content: space-between; /* Разделяет название и значение по краям */
+  padding: 5px 0; /* Отступ между строками */
+  border-bottom: 1px dotted #ccc; /* Добавляет точечную линию */
+}
+
+.characteristic-name {
+  flex-basis: 40%; /* Фиксированная ширина для названия */
+  text-align: left;
+}
+
+.characteristic-value {
+  flex-grow: 1; /* Заполняет оставшееся пространство */
+  text-align: right; /* Выравнивает значение справа */
+  padding-left: 10px; /* Отступ для разделения от точек */
+}

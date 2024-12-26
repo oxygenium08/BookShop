@@ -1,0 +1,84 @@
+.book-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 16px;
+  background-color: #f9f9f9;
+  gap: 0;
+}
+
+
+
+.book-card {
+
+  margin: 0;
+  flex: 1 1 calc(25% - 16px);
+  max-width: calc(26% - 16px);
+  box-sizing: border-box;
+  border: 1px solid #e0e0e0;
+}
+
+.book-card:hover {
+  box-shadow: 10px 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.book-image {
+  width: auto;
+  height: 200px;
+  padding: 16px;
+  border-radius: 4px;
+  margin-bottom: 12px;
+}
+
+.book-details {
+  text-align: center;
+}
+
+.book-title {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  height: 3.5em;
+  color: black;
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.book-author {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 8px;
+}
+
+.book-price {
+  font-size: 16px;
+  font-weight: bold;
+  color: #000;
+}
+
+.pagination button.active {
+  background-color: #007bff;
+  color: white;
+  border: none;
+}
+
+.pagination button {
+  background-color: transparent;
+  border: 1px solid #ddd;
+  padding: 5px 10px;
+  margin: 0 2px;
+  cursor: pointer;
+}
+
+.pagination button:disabled {
+  color: #ccc;
+  cursor: not-allowed;
+}
+
+
+
+
+

@@ -1,0 +1,39 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #f8f9fa;
+  border-bottom: 1px solid #ddd;
+}
+
+.header-title {
+  color: black;
+  font-size: 14px;
+  margin: 0;
+  text-decoration: none;
+}
+
+.header-phone {
+  margin: 0;
+  font-size: 16px;
+}
+
+.header-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.header-button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.header-button:hover {
+  background-color: #0056b3;
+}
