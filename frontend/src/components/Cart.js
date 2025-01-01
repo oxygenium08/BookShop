@@ -14,9 +14,7 @@ const Cart = () => {
         setCart(response.data.items);
       } catch (error) {
         if (error.response && error.response.status === 401) {
-          // Логика для повторной авторизации или перенаправления на страницу логина
           console.log('Ошибка авторизации, перенаправляем на страницу входа');
-          // Пример: перенаправить пользователя на страницу входа
           window.location.href = '';
         } else {
           console.error('Ошибка при загрузке корзины:', error);
@@ -46,7 +44,6 @@ const Cart = () => {
       console.error('Ошибка при обновлении количества товара:', error);
     }
   };
-
   const removeItem = async (itemId) => {
     try {
       await $api_token.delete(`/cart/api/${itemId}/`);
@@ -124,6 +121,13 @@ const Cart = () => {
       <div className="nav-button-container">
         <Link to="/">
           <button className="nav-button">На главную страницу</button>
+        </Link>
+
+        <Link
+          to='/order_form'
+          state={{ cartItems: cart, totalAmount: totalPrice }}
+        >
+          <button className="nav-button">Оформить заказ</button>
         </Link>
       </div>
     </div>

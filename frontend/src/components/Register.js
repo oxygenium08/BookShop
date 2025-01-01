@@ -33,7 +33,7 @@ const Register = ({ setAuth, setShowRegister }) => {
 
   return (
     <div className="login-container">
-      <h2>Регистрация</h2>
+      <h2 style={{textAlign: 'center'}}>Регистрация</h2>
       {error && <p style={{ color: 'red' }}>{error}</p>}
       <form onSubmit={handleSubmit}>
         <div className="form-row">

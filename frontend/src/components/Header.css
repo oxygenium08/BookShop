@@ -2,8 +2,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 20px;
-  background-color: #f8f9fa;
+  padding: 0px 20px;
+  background-color: #4caf50;
   border-bottom: 1px solid #ddd;
 }
 
@@ -14,26 +14,36 @@
   text-decoration: none;
 }
 
+.header-title:hover {
+  color: white;
+}
+
 .header-phone {
+  color: black;
   margin: 0;
   font-size: 16px;
 }
 
 .header-buttons {
   display: flex;
+  background: none;
+  color: black;
   gap: 10px;
 }
 
 .header-button {
-  background-color: #007bff;
-  color: #fff;
+  background: none;
+  color: black;
   border: none;
-  padding: 10px 20px;
-  border-radius: 4px;
+  padding: 0;
   cursor: pointer;
   text-decoration: none;
+  font-size: inherit;
+  font-family: inherit;
 }
 
 .header-button:hover {
-  background-color: #0056b3;
+  color: white;
+  background-color: transparent;
 }
+

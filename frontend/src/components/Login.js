@@ -31,7 +31,7 @@ const Login = ({ setAuth, setTokens, setShowLogin }) => {
 
   return (
     <div className="login-container">
-      <h2>Авторизация</h2>
+      <h2 style={{textAlign: 'center'}}>Авторизация</h2>
       <form onSubmit={handleSubmit}>
         <div className="form-row">
           <label>Имя пользователя:</label>

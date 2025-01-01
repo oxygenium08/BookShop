@@ -1,0 +1,111 @@
+.order-form {
+  margin: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.order-options {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.delivery-method,
+.pickup-address,
+.customer-info,
+.payment-method {
+  flex: 1;
+  text-align: left;
+  padding: 2px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+h2 {
+  margin-bottom: 10px;
+  text-align: left;
+  padding-left: 20px;
+  font-size: 18px;
+  color: #333;
+}
+
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  margin-bottom: 10px;
+}
+
+label {
+  font-size: 16px;
+  padding-left: 20px;
+  color: #333;
+  cursor: pointer;
+}
+
+.option-description {
+  font-size: 14px;
+  color: #777;
+  margin-left: 24px;
+  margin-top: 4px;
+}
+
+input[type="radio"] {
+  margin-right: 10px;
+}
+
+.pickup-address,
+.pickup-location,
+.customer-info {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+input[type="radio"] {
+  accent-color: #4CAF50;
+}
+
+input[type="radio"]:hover {
+  filter: brightness(90%);
+}
+input[type="text"],
+input[type="tel"] {
+  width: 95%;
+  padding: 8px;
+  margin: 5px 10px 5px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+button {
+  all: unset;
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #28a745;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #218838;
+}
+.delivery-icon {
+  color: #28a745;
+}
+
+
+
+

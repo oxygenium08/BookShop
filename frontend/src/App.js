@@ -10,6 +10,7 @@ import 'bootstrap-icons/font/bootstrap-icons.css';
 import Header from './components/Header';
 import Modal from './components/Modal';
 import CategoryList from './components/CategoryList';
+import OrderForm from './components/OrderForm';
 
 const App = () => {
   const [auth, setAuth] = useState(false);
@@ -87,29 +88,9 @@ const App = () => {
             <Route path="/category/:id" element={<BookList />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/books/:id" element={<BookDetail />} />
+            <Route path="/order_form" element={<OrderForm />} />
           </Routes>
         </main>
-{/*        <main>
-          <Routes>
-            <Route
-              path="/"
-              element={
-                <div>
-                  <BookList addToCart={(item) => setCart((prev) => [...prev, item])} />
-                  {auth && (
-                    <div style={{ marginTop: '20px', marginBottom: '20px', textAlign: 'center' }}>
-                      <Link to="/cart">
-                        <button>Перейти в корзину</button>
-                      </Link>
-                    </div>
-                  )}
-                </div>
-              }
-            />
-            <Route path="/cart" element={<Cart />} />
-            <Route path="/books/:id" element={<BookDetail />} />
-          </Routes>
-        </main>*/}
       </div>
     </Router>
   );

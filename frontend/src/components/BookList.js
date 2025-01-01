@@ -78,7 +78,7 @@ function BookList() {
                   <p className="book-author">Автор: {book.author}</p>
                   <p className="book-price">Цена: {book.price} руб</p>
               </div>
-              <button onClick={() => addToCart(book.id)}>
+              <button className="cart-button"  onClick={() => addToCart(book.id)}>
                 Добавить в корзину
               </button>
             </div>

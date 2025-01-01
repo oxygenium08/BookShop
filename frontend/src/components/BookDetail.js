@@ -57,7 +57,7 @@ const BookDetail = () => {
 
       <div className="tab-content">
         {activeTab === 'description' ? (
-          <p style={{ marginTop: '20px' }}>{book.description}</p>
+          <p style={{ marginTop: '20px', textAlign: 'justify' }}>{book.description}</p>
         ) : (
           <ul className="characteristics-list">
             <li className="characteristic-row">
