@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './Login.css';
 
@@ -47,7 +47,7 @@ const Register = ({ setAuth, setShowRegister }) => {
         <div className="form-row">
           <label>Email:</label>
           <input
-            type="email"
+            type="text"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import './OrderForm.css';
+import InputMask from 'react-input-mask';
 
 const OrderForm = () => {
   const [delivery, setDelivery] = useState('pickup');
@@ -29,6 +30,12 @@ const OrderForm = () => {
   };
 
   const handleSubmitOrder = () => {
+    const phonePattern = /^\+375 \((25|44|29|33|17)\) \d{3}-\d{2}-\d{2}$/;
+    if (!phonePattern.test(customerInfo.phone)) {
+      alert('Введите корректный номер телефона.');
+      return;
+    }
+
     alert('Заказ оформлен!');
   };
 
@@ -163,14 +170,21 @@ const OrderForm = () => {
           placeholder="Введите ФИО"
         />
         <label htmlFor="phone"><p style={{marginBottom: 0}}><i class="bi bi-phone delivery-icon"></i> Номер телефона:</p></label>
-        <input
-          type="tel"
-          id="phone"
-          name="phone"
+        <InputMask
+          mask="+375 (99) 999-99-99"
           value={customerInfo.phone}
           onChange={handleInputChange}
-          placeholder="Введите номер телефона"
-        />
+        >
+          {(inputProps) => (
+            <input
+              {...inputProps}
+              type="tel"
+              id="phone"
+              name="phone"
+              placeholder="+375 (__) ___-__-__"
+            />
+          )}
+        </InputMask>
       </div>
 
       <div className="customer-info">
