@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import $api_token from '../api';
 import { useParams } from 'react-router-dom';
 import Toast from './Toast';
+import AddToCartButton from './AddToCartButton';
 
 const itemsPerPage = 20;
 
@@ -14,7 +15,6 @@ function BookList() {
   const [currentPage, setCurrentPage] = useState(0);
   const [books, setBooks] = useState([]);
   const [isEmptyCategory, setIsEmptyCategory] = useState(false);
-  const [toastMessage, setToastMessage] = useState(null);
   useEffect(() => {
     axios.get(`http://127.0.0.1:8000/catalog/api/books/?category=${id}`)
       .then(response => {
@@ -43,25 +43,9 @@ function BookList() {
     setCurrentPage(event.selected);
   };
 
-  const addToCart = async (bookId) => {
-    try {
-      const response = await $api_token.post(`/cart/api/`, { book_id: bookId });
-      const data = response.data;
-      if (response.status === 201) {
-          setToastMessage(`'${data.message}'`);
-      } else {
-          setToastMessage('Произошла ошибка.');
-      }
-    } catch (error) {
-      console.error('Ошибка при добавлении книги в корзину:', error);
-      setToastMessage('Для добавления книги в корзину необходимо авторизоваться');
-    }
-  };
-
   return (
     <div>
       <h1>Книги</h1>
-      {toastMessage && <Toast message={toastMessage} onClose={() => setToastMessage(null)} />}
 
 
       {isEmptyCategory ? (
@@ -71,16 +55,14 @@ function BookList() {
           {currentItems.map(book => (
             <div key={book.id} className="book-card">
               <img src={book.image} alt={book.title} className="book-image" />
-              <div className="book-info">
-                  <Link to={`/books/${book.id}`} className="book-title">
-                    <h4>{book.title}</h4>
-                  </Link>
-                  <p className="book-author">Автор: {book.author}</p>
-                  <p className="book-price">Цена: {book.price} руб</p>
+              <div>
+                <Link to={`/books/${book.id}`} className="book-title">
+                  <h4>{book.title}</h4>
+                </Link>
+                <p className="book-author">Автор: {book.author}</p>
+                <p className="book-price">Цена: {book.price} руб</p>
               </div>
-              <button className="cart-button"  onClick={() => addToCart(book.id)}>
-                Добавить в корзину
-              </button>
+              <AddToCartButton bookId={book.id} />
             </div>
           ))}
         </div>

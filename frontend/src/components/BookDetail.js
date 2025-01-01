@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import './BookDetail.css';
+import AddToCartButton from './AddToCartButton';
 
 const BookDetail = () => {
   const { id } = useParams();
@@ -39,7 +40,13 @@ const BookDetail = () => {
   return (
     <div className="book-detail">
       <h1>{book.title}</h1>
-      <img src={book.image} alt={book.title} className="book-cover" />
+      <div className="book-detail-content">
+        <img src={book.image} alt={book.title} className="book-cover" />
+        <div className="book-info">
+          <p className="book-price">Цена: {book.price} руб</p>
+          <AddToCartButton bookId={book.id} />
+        </div>
+      </div>
       <div className="tabs">
         <button
           className={`tab-button ${activeTab === 'description' ? 'active' : ''}`}
