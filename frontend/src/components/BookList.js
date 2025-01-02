@@ -10,11 +10,27 @@ import AddToCartButton from './AddToCartButton';
 
 const itemsPerPage = 20;
 
+
 function BookList() {
   const { id } = useParams();
   const [currentPage, setCurrentPage] = useState(0);
   const [books, setBooks] = useState([]);
   const [isEmptyCategory, setIsEmptyCategory] = useState(false);
+  const [cartItems, setCartItems] = useState([]);
+
+  useEffect(() => {
+  const fetchCartItems = async () => {
+    try {
+      const response = await $api_token.get('/cart/api/');
+      setCartItems(response.data.items);
+    } catch (error) {
+      console.error('Ошибка при загрузке корзины:', error);
+    }
+  };
+
+  fetchCartItems();
+  }, []);
+
   useEffect(() => {
     axios.get(`http://127.0.0.1:8000/catalog/api/books/?category=${id}`)
       .then(response => {
@@ -43,6 +59,12 @@ function BookList() {
     setCurrentPage(event.selected);
   };
 
+  console.log(cartItems.some(item => item.book === 45))
+
+  const updateCartItems = (newCartItem) => {
+    setCartItems(prevItems => [...prevItems, newCartItem]);
+  };
+
   return (
     <div>
       <h1>Книги</h1>
@@ -62,7 +84,13 @@ function BookList() {
                 <p className="book-author">Автор: {book.author}</p>
                 <p className="book-price">Цена: {book.price} руб</p>
               </div>
-              <AddToCartButton bookId={book.id} />
+              <div className="book-card-footer">
+              <AddToCartButton
+                bookId={book.id}
+                isInCart={cartItems.some(item => item.book === book.id)}
+                updateCartItems={updateCartItems}
+              />
+              </div>
             </div>
           ))}
         </div>

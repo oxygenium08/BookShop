@@ -10,7 +10,7 @@
 
 
 .book-card {
-
+  position: relative;
   margin: 0;
   flex: 1 1 calc(25% - 16px);
   max-width: calc(26% - 16px);
@@ -21,6 +21,25 @@
 .book-card:hover {
   box-shadow: 10px 8px 16px rgba(0, 0, 0, 0.2);
 }
+
+.cart-button {
+
+  color: black;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+  margin-bottom: 10px;
+}
+
+.cart-button:hover {
+  transform: scale(1.02);
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+}
+
 
 .book-image {
   width: auto;
@@ -57,6 +76,7 @@
   font-size: 16px;
   font-weight: bold;
   color: #000;
+  margin-bottom: 44px;
 }
 
 .pagination button.active {
@@ -79,25 +99,22 @@
   cursor: not-allowed;
 }
 
-.cart-button {
 
-  color: black;
-  border: none;
-  padding: 5px 10px;
-  border-radius: 3px;
-  cursor: pointer;
-  font-size: 0.8rem;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s, box-shadow 0.2s;
-  margin-bottom: 10px;
-}
-
-.cart-button:hover {
-  transform: scale(1.02);
-  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+.book-card-footer {
+  position: absolute;
+  bottom: 0px;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s, visibility 0.3s;
 }
 
 
+.book-card:hover .book-card-footer {
+  opacity: 1;
+  visibility: visible;
+}
 
 
 
