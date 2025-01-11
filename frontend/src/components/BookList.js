@@ -11,12 +11,13 @@ import AddToCartButton from './AddToCartButton';
 const itemsPerPage = 20;
 
 
-function BookList() {
+function BookList({ onCartUpdate }) {
   const { id } = useParams();
   const [currentPage, setCurrentPage] = useState(0);
   const [books, setBooks] = useState([]);
   const [isEmptyCategory, setIsEmptyCategory] = useState(false);
   const [cartItems, setCartItems] = useState([]);
+  const [toastMessage, setToastMessage] = useState(null);
 
   useEffect(() => {
   const fetchCartItems = async () => {
@@ -68,6 +69,7 @@ function BookList() {
   return (
     <div>
       <h1>Книги</h1>
+      {toastMessage && <Toast message={toastMessage} onClose={() => setToastMessage(null)} />}
 
 
       {isEmptyCategory ? (
@@ -89,6 +91,8 @@ function BookList() {
                 bookId={book.id}
                 isInCart={cartItems.some(item => item.book === book.id)}
                 updateCartItems={updateCartItems}
+                setToastMessage={setToastMessage}
+                onCartUpdate={onCartUpdate}
               />
               </div>
             </div>

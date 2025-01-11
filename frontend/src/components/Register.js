@@ -20,7 +20,7 @@ const Register = ({ setAuth, setShowRegister }) => {
     .catch((error) => {
       if (error.response) {
         // Ошибка от сервера
-        setError(`Ошибка регистрации: ${error.response.data.detail || 'Неизвестная ошибка'}`);
+        setError(`Ошибка регистрации: ${error.response.data['email'] || 'Неизвестная ошибка'}`);
       } else if (error.request) {
         // Ошибка запроса
         setError('Ошибка связи с сервером');

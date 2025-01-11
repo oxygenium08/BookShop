@@ -1,9 +1,9 @@
 /* src/components/CategoryList.css */
 .category-list {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Автоматически заполняем столбцы */
+  grid-template-columns: repeat(2, 1fr);
   gap: 20px;
-  margin: 20px;
+  margin: 60px;
 }
 
 .category-item {
@@ -25,7 +25,8 @@
   cursor: pointer;
   display: flex;
   flex-direction: column;
-  height: 110px; /* Фиксированная высота карточки */
+  height: 180px;
+  width: 600px;
 }
 
 .category-card:hover {
@@ -34,13 +35,14 @@
 }
 
 .category-image {
-  width: 100%;
-  height: 50px; /* Фиксированная высота для изображений */
-  object-fit: contain; /* Масштабирование изображения без обрезки */
+  width: auto;
+  height: 100px;
+  object-fit: contain;
+  margin-bottom: 20px;
+  margin-top: 20px;
 }
 
 .category-name {
-  display: flex;
   align-items: center;
   padding: 15px;
   text-align: center;
@@ -49,5 +51,5 @@
   color: #333;
   background-color: #f8f8f8;
   margin: 0;
-  flex-grow: 1; /* Заставляем название занять оставшееся место */
+  flex-grow: 1;
 }

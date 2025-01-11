@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import './BookDetail.css';
+import $api_token from '../api';
 import AddToCartButton from './AddToCartButton';
 
 const BookDetail = () => {
@@ -9,6 +10,21 @@ const BookDetail = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [activeTab, setActiveTab] = useState('description');
+  const [cartItems, setCartItems] = useState([]);
+  const [toastMessage, setToastMessage] = useState(null);
+
+  useEffect(() => {
+  const fetchCartItems = async () => {
+    try {
+      const response = await $api_token.get('/cart/api/');
+      setCartItems(response.data.items);
+    } catch (error) {
+      console.error('Ошибка при загрузке корзины:', error);
+    }
+  };
+
+  fetchCartItems();
+  }, []);
 
   useEffect(() => {
     const fetchBookDetail = async () => {
@@ -36,7 +52,9 @@ const BookDetail = () => {
   if (error) {
     return <p>Произошла ошибка: {error}</p>;
   }
-
+  const updateCartItems = (newCartItem) => {
+    setCartItems(prevItems => [...prevItems, newCartItem]);
+  };
   return (
     <div className="book-detail">
       <h1>{book.title}</h1>
@@ -44,7 +62,12 @@ const BookDetail = () => {
         <img src={book.image} alt={book.title} className="book-cover" />
         <div className="book-info">
           <p className="book-price">Цена: {book.price} руб</p>
-          <AddToCartButton bookId={book.id} />
+          <AddToCartButton
+            bookId={book.id}
+            isInCart={cartItems.some(item => item.book === book.id)}
+            updateCartItems={updateCartItems}
+            setToastMessage={setToastMessage}
+          />
         </div>
       </div>
       <div className="tabs">

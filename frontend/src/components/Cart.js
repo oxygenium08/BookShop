@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import './Cart.css';
 import $api_token from '../api';
 
-const Cart = () => {
+const Cart = ({ onCartUpdate }) => {
 
   const [cart, setCart] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -11,6 +11,7 @@ const Cart = () => {
     const fetchCartItems = async () => {
       try {
         const response = await $api_token.get('/cart/api/');
+        onCartUpdate()
         setCart(response.data.items);
       } catch (error) {
         if (error.response && error.response.status === 401) {
@@ -35,6 +36,7 @@ const Cart = () => {
   const updateQuantity = async (itemId, newQuantity) => {
     try {
       await $api_token.patch(`/cart/api/${itemId}/`, { quantity: newQuantity });
+      onCartUpdate()
       setCart((prevCart) =>
         prevCart.map((item) =>
           item.id === itemId ? { ...item, quantity: newQuantity } : item
@@ -47,6 +49,7 @@ const Cart = () => {
   const removeItem = async (itemId) => {
     try {
       await $api_token.delete(`/cart/api/${itemId}/`);
+      onCartUpdate()
       setCart((prevCart) => prevCart.filter((item) => item.id !== itemId));
     } catch (error) {
       console.error('Ошибка при удалении товара из корзины:', error);

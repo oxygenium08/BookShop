@@ -4,8 +4,7 @@ import Toast from './Toast';
 import './AddToCartButton.css';
 import { useNavigate } from 'react-router-dom';
 
-const AddToCartButton = ({ bookId, isInCart, updateCartItems }) => {
-  const [toastMessage, setToastMessage] = useState(null);
+const AddToCartButton = ({ bookId, isInCart, updateCartItems, setToastMessage, onCartUpdate }) => {
   const navigate = useNavigate();
 
   const handleNavigateToCart = () => {
@@ -13,11 +12,12 @@ const AddToCartButton = ({ bookId, isInCart, updateCartItems }) => {
   };
 
   const addToCart = async () => {
-    updateCartItems({ book: bookId });
     try {
       const response = await $api_token.post(`/cart/api/`, { book_id: bookId });
       const data = response.data;
+      onCartUpdate()
       if (response.status === 201) {
+        updateCartItems({ book: bookId });
         setToastMessage(data.message);
       } else {
         setToastMessage('Произошла ошибка.');
@@ -30,7 +30,6 @@ const AddToCartButton = ({ bookId, isInCart, updateCartItems }) => {
 
   return (
     <div>
-      {toastMessage && <Toast message={toastMessage} onClose={() => setToastMessage(null)} />}
       {isInCart ? (
         <button className="cart-button in-cart" onClick={handleNavigateToCart}>
           Уже в корзине
