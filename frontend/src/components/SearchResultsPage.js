@@ -23,8 +23,9 @@ const SearchResultsPage = ({ results, onCartUpdate }) => {
     setCartItems(prevItems => [...prevItems, newCartItem]);
   };
   return (
+<>
+    <h2>Результаты поиска:</h2>
     <div className="book-list">
-      <h2>Результаты поиска</h2>
       {results.length === 0 ? (
         <p>Ничего не найдено</p>
       ) : (
@@ -51,6 +52,7 @@ const SearchResultsPage = ({ results, onCartUpdate }) => {
       ))
     )}
   </div>
+  </>
   );
 };
 

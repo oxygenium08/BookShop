@@ -24,6 +24,7 @@ const App = () => {
   const [isModalOpen, setModalOpen] = useState(false);
   const [isRegister, setIsRegister] = useState(false);
   const [books, setBooks] = useState([]);
+  const [filteredBooks, setFilteredBooks] = useState([]);
   const [updateCartTrigger, setUpdateCartTrigger] = useState(false);
   useEffect(() => {
     const fetchCartItems = async () => {
@@ -91,7 +92,7 @@ const App = () => {
     const filteredBooks = books.filter(book =>
       book.title.toLowerCase().includes(query.toLowerCase())
     );
-    setBooks(filteredBooks);
+    setFilteredBooks(filteredBooks);
     navigate('/search')
   };
 
@@ -139,7 +140,7 @@ const App = () => {
             <Route path="/books/:id" element={<BookDetail />} />
             <Route path="/order_form" element={<OrderForm />} />
             <Route path="/contacts" element={<Contacts />} />
-            <Route path="/search" element={<SearchResultsPage results={books} onCartUpdate={triggerCartUpdate}/>} />
+            <Route path="/search" element={<SearchResultsPage results={filteredBooks} onCartUpdate={triggerCartUpdate}/>} />
           </Routes>
         </main>
         <Footer/>

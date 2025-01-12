@@ -12,28 +12,31 @@
 .header-title {
   color: black;
   font-size: 14px;
+  text-align: left;
   margin: 0;
   text-decoration: none;
+  flex: 19;
 }
 
 .header-contacts {
   color: black;
   font-size: 16px;
   margin: 0;
-  margin-left: 0px;
   text-decoration: none;
+  flex: 2.5;
 }
 
 .header-search {
     display: flex;
     gap: 5px;
-    margin-left: 250px;
+    flex: 4.5;
 }
 
 .header-buttons {
   display: flex;
   background: none;
   color: black;
+  flex: 3;
   gap: 10px;
 }
 
@@ -51,6 +54,7 @@
   text-decoration: none;
   font-size: inherit;
   font-family: inherit;
+  margin-left: auto;
 }
 
 .header-button:hover {
