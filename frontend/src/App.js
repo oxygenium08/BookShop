@@ -90,7 +90,7 @@ const App = () => {
 
   const handleSearch = (query) => {
     const filteredBooks = books.filter(book =>
-      book.title.toLowerCase().includes(query.toLowerCase())
+      book.title.toLowerCase().includes(query.toLowerCase()) | book.author.toLowerCase().includes(query.toLowerCase())
     );
     setFilteredBooks(filteredBooks);
     navigate('/search')
@@ -108,27 +108,31 @@ const App = () => {
 
         {isModalOpen && (
           <Modal onClose={() => setModalOpen(false)}>
-            {isRegister ? (
-              <Register setAuth={handleLogin} />
-            ) : (
-              <Login setAuth={handleLogin} />
-            )}
+            {isRegister
+              ? (<Register setAuth={handleLogin} />)
+              : (<Login setAuth={handleLogin} />)
+            }
             <div className="modal-footer">
-              {isRegister ? (
-                <p>
-                  Уже есть аккаунт?{' '}
-                  <span className="modal-link" onClick={openLoginModal}>
-                    Войдите
-                  </span>
-                </p>
-              ) : (
-                <p>
-                  Нет аккаунта?{' '}
-                  <span className="modal-link" onClick={openRegisterModal}>
-                    Зарегистрируйтесь
-                  </span>
-                </p>
-              )}
+              {isRegister
+                ?
+                  (
+                    <p>
+                      Уже есть аккаунт?{' '}
+                      <span className="modal-link" onClick={openLoginModal}>
+                        Войдите
+                      </span>
+                    </p>
+                  )
+                :
+                  (
+                    <p>
+                      Нет аккаунта?{' '}
+                      <span className="modal-link" onClick={openRegisterModal}>
+                        Зарегистрируйтесь
+                      </span>
+                    </p>
+                  )
+              }
             </div>
           </Modal>
         )}
