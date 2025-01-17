@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import './BookDetail.css';
-import $api_token from '../api';
-import AddToCartButton from './AddToCartButton';
+import $api_token from '../../api'
+import AddToCartButton from '../UI/AddToCartButton';
 
 const BookDetail = () => {
   const { id } = useParams();

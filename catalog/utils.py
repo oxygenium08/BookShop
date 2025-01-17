@@ -3,7 +3,7 @@ import os
 import requests
 from MyBooks.catalog.models import Book
 import django
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'MyBooks.settings.py')  # Указываем путь к файлу настроек
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'MyBooks.settings.py')
 django.setup()
 
 def download_image(image_url, filename):

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import './OrderForm.css';
+import styles from './OrderForm.module.css';
 import InputMask from 'react-input-mask';
 
 const OrderForm = () => {
@@ -40,10 +40,10 @@ const OrderForm = () => {
   };
 
   return (
-    <div className="order-form">
-      <div className="order-options">
+    <div className={styles["order-form"]}>
+      <div className={styles["order-options"]}>
 
-        <div className="delivery-method">
+        <div className={styles["delivery-method"]}>
           <h2><i class="bi bi-bus-front delivery-icon"></i> Способ доставки</h2>
           <ul>
             <li>
@@ -57,7 +57,7 @@ const OrderForm = () => {
                 />
                 Самовывоз
               </label>
-              <p className="option-description">
+              <p className={styles["option-description"]}>
                 Вы можете самостоятельно забрать заказ из нашего магазина.
               </p>
             </li>
@@ -77,7 +77,7 @@ const OrderForm = () => {
         </div>
 
 
-        <div className="payment-method">
+        <div className={styles["payment-method"]}>
           <h2><i class="bi bi-wallet delivery-icon"></i> Способ оплаты</h2>
           <ul>
             <li>
@@ -110,7 +110,7 @@ const OrderForm = () => {
 
 
       {delivery === 'pickup' ? (
-        <div className="pickup-address">
+        <div className={styles["pickup-address"]}>
           <label htmlFor="pickup-address"><h2><i class="bi bi-shop delivery-icon"></i> Выберите пункт самовывоза:</h2></label>
           <ul>
             <li>
@@ -140,7 +140,7 @@ const OrderForm = () => {
           </ul>
         </div>
       ) : (
-        <div className="pickup-address">
+        <div className={styles["pickup-address"]}>
           <label htmlFor="pickup-location">
             <h2>
               <i class="bi bi-shop delivery-icon"></i> Пункт получения:
@@ -158,7 +158,7 @@ const OrderForm = () => {
       )}
 
 
-      <div className="customer-info">
+      <div className={styles["customer-info"]}>
         <h2>Информация о покупателе:</h2>
         <label htmlFor="name"><p style={{marginBottom: 0}}><i class="bi bi-person delivery-icon"></i> Фамилия, имя, отчество:</p></label>
         <input
@@ -187,9 +187,9 @@ const OrderForm = () => {
         </InputMask>
       </div>
 
-      <div className="customer-info">
+      <div className={styles["customer-info"]}>
         <h2>Товары в заказе:</h2>
-        <table className="cart-table">
+        <table className={styles["cart-table"]}>
           <thead>
             <tr>
               <th>Название книги</th>

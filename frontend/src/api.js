@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-// Создаем экземпляр axios
+
 const $api_token = axios.create({
     baseURL: process.env.REACT_APP_API_URL || 'http://localhost:8000/',
     headers: {
@@ -8,7 +8,7 @@ const $api_token = axios.create({
     },
 });
 
-// Добавляем перехватчик запросов
+
 $api_token.interceptors.request.use((config) => {
     const token = localStorage.getItem('accessToken');
     console.log("Access token in interceptor:", token);
@@ -22,7 +22,7 @@ $api_token.interceptors.request.use((config) => {
     return Promise.reject(error);
 });
 
-// Добавляем перехватчик ответов
+
 $api_token.interceptors.response.use((response) => {
     return response;
 }, async (error) => {
@@ -35,7 +35,6 @@ $api_token.interceptors.response.use((response) => {
             if (refreshToken) {
                 const { data } = await axios.post('http://127.0.0.1:8000/api/auth/token/refresh/', { refresh: refreshToken });
                 localStorage.setItem('accessToken', data.access);
-                // Повторяем запрос с новым токеном
                 originalRequest.headers['Authorization'] = `Bearer ${data.access}`;
                 return $api_token(originalRequest);
             }
@@ -50,7 +49,7 @@ $api_token.interceptors.response.use((response) => {
 function logout() {
     localStorage.removeItem('accessToken');
     localStorage.removeItem('refreshToken');
-    window.location.href = ''; // Перенаправляем пользователя на страницу входа
+    window.location.href = '';
 }
 
 export default $api_token;

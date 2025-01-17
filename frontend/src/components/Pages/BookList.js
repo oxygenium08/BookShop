@@ -3,10 +3,10 @@ import axios from 'axios';
 import Cart from './Cart';
 import './BookList.css';
 import { Link } from 'react-router-dom';
-import $api_token from '../api';
+import $api_token from '../../api'
 import { useParams } from 'react-router-dom';
-import Toast from './Toast';
-import AddToCartButton from './AddToCartButton';
+import Toast from '../UI/Toast';
+import AddToCartButton from '../UI/AddToCartButton';
 
 const itemsPerPage = 20;
 
@@ -59,8 +59,6 @@ function BookList({ onCartUpdate }) {
   const handlePageClick = (event) => {
     setCurrentPage(event.selected);
   };
-
-  console.log(cartItems.some(item => item.book === 45))
 
   const updateCartItems = (newCartItem) => {
     setCartItems(prevItems => [...prevItems, newCartItem]);

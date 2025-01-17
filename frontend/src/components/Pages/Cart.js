@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Cart.css';
-import $api_token from '../api';
+import $api_token from '../../api'
 
 const Cart = ({ onCartUpdate }) => {
 

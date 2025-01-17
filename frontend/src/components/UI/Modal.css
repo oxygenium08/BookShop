@@ -21,12 +21,24 @@
 
 .modal-close {
   position: absolute;
+  color: black;
   top: 10px;
   right: 10px;
   background: none;
   border: none;
   font-size: 20px;
   cursor: pointer;
+}
+
+.modal-close:hover {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: black;
 }
 
 .modal-footer {

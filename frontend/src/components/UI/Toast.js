@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import './Toast.css';
+import styles from './Toast.module.css';
 
 const Toast = ({ message, onClose }) => {
     useEffect(() => {
@@ -8,7 +8,7 @@ const Toast = ({ message, onClose }) => {
     }, [onClose]);
 
     return (
-        <div className="toast">
+        <div className={styles["toast"]}>
             {message}
         </div>
     );

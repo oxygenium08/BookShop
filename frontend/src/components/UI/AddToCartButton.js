@@ -1,7 +1,5 @@
-import React, { useState } from 'react';
-import $api_token from '../api';
-import Toast from './Toast';
-import './AddToCartButton.css';
+import styles from './AddToCartButton.module.css';
+import $api_token from '../../api'
 import { useNavigate } from 'react-router-dom';
 
 const AddToCartButton = ({ bookId, isInCart, updateCartItems, setToastMessage, onCartUpdate }) => {
@@ -31,11 +29,11 @@ const AddToCartButton = ({ bookId, isInCart, updateCartItems, setToastMessage, o
   return (
     <div>
       {isInCart ? (
-        <button className="cart-button in-cart" onClick={handleNavigateToCart}>
+        <button className={`${styles["cart-button"]} ${styles["in-cart"]}`} onClick={handleNavigateToCart}>
           Уже в корзине
         </button>
       ) : (
-        <button className="cart-button" onClick={addToCart}>
+        <button className={styles["cart-button"]} onClick={addToCart}>
           Добавить в корзину
         </button>
       )}

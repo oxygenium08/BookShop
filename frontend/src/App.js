@@ -1,24 +1,25 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes, Link, useNavigate } from 'react-router-dom';
-import Register from './components/Register';
-import Login from './components/Login';
-import BookList from './components/BookList';
-import Cart from './components/Cart';
+import Register from './components/Forms/Register';
+import Login from './components/Forms/Login';
+import BookList from './components/Pages/BookList';
+import Cart from './components/Pages/Cart';
 import './App.css';
-import BookDetail from './components/BookDetail';
+import BookDetail from './components/Pages/BookDetail';
 import 'bootstrap-icons/font/bootstrap-icons.css';
-import Header from './components/Header';
-import Footer from './components/Footer';
-import Modal from './components/Modal';
-import CategoryList from './components/CategoryList';
-import OrderForm from './components/OrderForm';
-import Contacts from './components/Contacts';
-import SearchResultsPage from './components/SearchResultsPage';
+import Header from './components/Layout/Header';
+import Footer from './components/Layout/Footer';
+import Modal from './components/UI/Modal';
+import CategoryList from './components/Pages/CategoryList';
+import OrderForm from './components/Forms/OrderForm';
+import Contacts from './components/Pages/Contacts';
+import SearchResultsPage from './components/Pages/SearchResultsPage';
 import $api_token from './api';
 import axios from 'axios';
+import { AuthContext } from './context/AuthContext';
 
 const App = () => {
-  const [auth, setAuth] = useState(false);
+  const { auth, handleLogin, handleLogout, loading } = React.useContext(AuthContext);
   const navigate = useNavigate();
   const [cart, setCart] = useState([]);
   const [isModalOpen, setModalOpen] = useState(false);
@@ -48,12 +49,6 @@ const App = () => {
     setUpdateCartTrigger((prev) => !prev);
   };
 
-  useEffect(() => {
-    const token = localStorage.getItem('accessToken');
-    if (token) {
-      setAuth(true);
-    }
-  }, []);
 
   useEffect(() => {
     axios.get('http://127.0.0.1:8000/catalog/api/books/')
@@ -65,17 +60,6 @@ const App = () => {
       });
   }, []);
 
-  const handleLogin = () => {
-    setAuth(true);
-    setModalOpen(false);
-  };
-
-  const handleLogout = () => {
-    localStorage.removeItem('accessToken');
-    localStorage.removeItem('refreshToken');
-    setAuth(false);
-    window.location.href = '/';
-  };
 
   const openLoginModal = () => {
     setIsRegister(false);
@@ -95,7 +79,9 @@ const App = () => {
     setFilteredBooks(filteredBooks);
     navigate('/search')
   };
-
+  if (loading) {
+    return <p>Загрузка...</p>;
+  }
   return (
       <div id='root'>
         <Header
@@ -109,8 +95,8 @@ const App = () => {
         {isModalOpen && (
           <Modal onClose={() => setModalOpen(false)}>
             {isRegister
-              ? (<Register setAuth={handleLogin} />)
-              : (<Login setAuth={handleLogin} />)
+              ? (<Register setAuth={handleLogin} setShowRegister={setModalOpen}/>)
+              : (<Login setAuth={handleLogin} setShowLogin={setModalOpen} />)
             }
             <div className="modal-footer">
               {isRegister

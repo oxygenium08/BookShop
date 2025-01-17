@@ -1,15 +1,13 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import './Login.css';
+import styles from './Login.module.css';
 
 const Login = ({ setAuth, setTokens, setShowLogin }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
-
   const handleSubmit = (event) => {
     event.preventDefault();
-
     const userData = { username, password };
 
     axios.post('http://127.0.0.1:8000/api/auth/token/', userData)
@@ -17,6 +15,7 @@ const Login = ({ setAuth, setTokens, setShowLogin }) => {
         localStorage.setItem('accessToken', response.data.access);
         localStorage.setItem('refreshToken', response.data.refresh);
         setAuth(true);
+        setError('');
         setShowLogin(false);
       })
       .catch(error => {
@@ -28,12 +27,11 @@ const Login = ({ setAuth, setTokens, setShowLogin }) => {
         console.error("Login error:", error);
       });
   };
-
   return (
-    <div className="login-container">
+    <div className={styles['login-container']}>
       <h2 style={{textAlign: 'center'}}>Авторизация</h2>
       <form onSubmit={handleSubmit}>
-        <div className="form-row">
+        <div className={styles['form-row']}>
           <label>Имя пользователя:</label>
           <input
             type="text"
@@ -41,7 +39,7 @@ const Login = ({ setAuth, setTokens, setShowLogin }) => {
             onChange={(e) => setUsername(e.target.value)}
           />
         </div>
-        <div className="form-row">
+        <div className={styles['form-row']}>
           <label>Пароль:</label>
           <input
             type="password"
@@ -49,9 +47,9 @@ const Login = ({ setAuth, setTokens, setShowLogin }) => {
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
-        <button type="submit" className="submit-button">Войти</button>
+        <button type="submit" className={styles['submit-button']}>Войти</button>
       </form>
-      {error && <p className="error-message">{error}</p>}
+      {error && <p className={styles['error-message']}>{error}</p>}
     </div>
   );
 };

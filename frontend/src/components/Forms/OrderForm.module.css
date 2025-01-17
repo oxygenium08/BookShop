@@ -106,6 +106,57 @@ button:hover {
   color: #28a745;
 }
 
+.cart-table {
+  width: 100%;
+  border-collapse: collapse;
+}
 
+.cart-table th,
+.cart-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+}
+
+.cart-table .action-button {
+  margin: 0 5px;
+  padding: 5px 10px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.cart-table .action-button:disabled {
+  background-color: #ddd;
+  cursor: not-allowed;
+}
+
+
+.cart-table th:nth-child(1),
+.cart-table td:nth-child(1) {
+  width: 35%;
+}
+
+.cart-table th:nth-child(2),
+.cart-table td:nth-child(2) {
+  width: 20%;
+}
+
+.cart-table th:nth-child(3),
+.cart-table td:nth-child(3) {
+  width: 15%;
+}
+
+.cart-table th:nth-child(4),
+.cart-table td:nth-child(4) {
+  width: 15%;
+}
+
+.cart-table th:nth-child(5),
+.cart-table td:nth-child(5) {
+  width: 15%;
+}
 
 

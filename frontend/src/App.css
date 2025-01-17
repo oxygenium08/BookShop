@@ -39,7 +39,12 @@
 
 
 .modal-link {
-  position: relative;
-  z-index: 999999;
+  color: #007bff;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.modal-link:hover {
+  text-decoration: none;
 }
 

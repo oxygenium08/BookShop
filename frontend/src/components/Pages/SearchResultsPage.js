@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './SearchResultsPage.css';
-import $api_token from '../api';
-import AddToCartButton from './AddToCartButton';
+import $api_token from '../../api'
+import AddToCartButton from '../UI/AddToCartButton';
 import { Link } from 'react-router-dom';
 
 const SearchResultsPage = ({ results, onCartUpdate }) => {

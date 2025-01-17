@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import './Login.css';
+import styles from './Login.module.css';
 
 const Register = ({ setAuth, setShowRegister }) => {
   const [username, setUsername] = useState('');
@@ -10,33 +10,30 @@ const Register = ({ setAuth, setShowRegister }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setAuth(true)
     axios.post('http://127.0.0.1:8000/api/auth/register/', { username, email, password })
       .then((response) => {
         localStorage.setItem('accessToken', response.data.access);
         localStorage.setItem('refreshToken', response.data.refresh);
-        setAuth(true);  // После успешной регистрации устанавливаем авторизацию
-        setShowRegister(false);  // Закрываем форму
+        setShowRegister(false);
       })
     .catch((error) => {
       if (error.response) {
-        // Ошибка от сервера
         setError(`Ошибка регистрации: ${error.response.data['email'] || 'Неизвестная ошибка'}`);
       } else if (error.request) {
-        // Ошибка запроса
         setError('Ошибка связи с сервером');
       } else {
-        // Общая ошибка
         setError('Ошибка регистрации');
       }
     });
   };
 
   return (
-    <div className="login-container">
+    <div className={styles['login-container']}>
       <h2 style={{textAlign: 'center'}}>Регистрация</h2>
       {error && <p style={{ color: 'red' }}>{error}</p>}
       <form onSubmit={handleSubmit}>
-        <div className="form-row">
+        <div className={styles["form-row"]}>
           <label>Имя пользователя:</label>
           <input
             type="text"
@@ -44,7 +41,7 @@ const Register = ({ setAuth, setShowRegister }) => {
             onChange={(e) => setUsername(e.target.value)}
           />
         </div>
-        <div className="form-row">
+        <div className={styles["form-row"]}>
           <label>Email:</label>
           <input
             type="text"
@@ -52,7 +49,7 @@ const Register = ({ setAuth, setShowRegister }) => {
             onChange={(e) => setEmail(e.target.value)}
           />
         </div>
-        <div className="form-row">
+        <div className={styles["form-row"]}>
           <label>Пароль:</label>
           <input
             type="password"
@@ -60,7 +57,7 @@ const Register = ({ setAuth, setShowRegister }) => {
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
-        <button type="submit" className="submit-button">Зарегистрироваться</button>
+        <button type="submit" className={styles["submit-button"]}>Зарегистрироваться</button>
       </form>
     </div>
   );

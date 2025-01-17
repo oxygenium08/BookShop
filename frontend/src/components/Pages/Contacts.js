@@ -1,6 +1,6 @@
 import React from "react";
 import "./Contacts.css";
-import Divider from './Divider';
+import Divider from '../Layout/Divider';
 
 const Contacts = () => {
   return (
